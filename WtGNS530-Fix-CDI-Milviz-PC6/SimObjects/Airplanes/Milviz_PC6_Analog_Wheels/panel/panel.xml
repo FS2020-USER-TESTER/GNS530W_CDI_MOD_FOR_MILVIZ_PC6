@@ -1,0 +1,65 @@
+<PlaneHTMLConfig>
+
+	<Instrument>
+		<Name>KR87</Name>
+		<Electric>
+			<Simvar name="CIRCUIT ON:21" unit="Boolean"/>
+		</Electric>
+	</Instrument>
+
+	<Instrument>
+		<Name>KAP140</Name>
+		<Electric>
+			<Simvar name="CIRCUIT ON:23" unit="Boolean"/>
+		</Electric>
+	</Instrument>
+
+	<Instrument>
+		<Name>AS530</Name>
+		<ComIndex>1</ComIndex>
+		<NavIndex>1</NavIndex>
+		<Electric>
+			<Simvar name="CIRCUIT ON:9" unit="Boolean"/>
+		</Electric>
+	</Instrument>
+
+	<Instrument>
+		<Name>AS430</Name>
+		<ComIndex>2</ComIndex>
+		<NavIndex>2</NavIndex>
+		<Electric>
+			<Simvar name="CIRCUIT ON:10" unit="Boolean"/>
+		</Electric>
+	</Instrument>
+
+	<Instrument>
+		<Name>AS330</Name>
+		<Electric>
+			<Simvar name="CIRCUIT ON:10" unit="Boolean"/>
+		</Electric>
+	</Instrument>
+
+
+<!-- VoicesAlerts -->
+
+		<VoicesAlerts>
+
+			<Alert>
+				<Type>SoundOnly</Type>
+				<SoundEvent>aural_stall</SoundEvent>
+				<Condition>
+					<Simvar name="STALL WARNING" unit="Bool"/>
+				</Condition>
+			</Alert>
+
+			<Alert>
+				<Type>SoundOnly</Type>
+				<SoundEvent>warning_out_of_trim_siren</SoundEvent>
+				<Condition>
+						<Simvar name="L:TrimFlagAlert" unit="Bool"/>
+				</Condition>
+			</Alert>
+
+		<VoicesAlerts>
+
+</PlaneHTMLConfig>
