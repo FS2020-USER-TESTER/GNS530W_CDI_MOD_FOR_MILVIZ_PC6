@@ -1,22 +1,52 @@
 {
   "content": [
     {
-      "path": "ContentInfo/milviz-cessna310/Thumbnail.JPG",
-      "size": 20052,
+      "path": "ContentInfo/milviz-aircraft-pc6/Thumbnail.JPG",
+      "size": 35724,
       "date": 132967275697665748
     },
     {
-      "path": "SimObjects/Airplanes/Milviz_310R/systems.cfg",
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/systems.cfg",
       "size": 26594,
       "date": 133121182379694268
     },
     {
-      "path": "SimObjects/Airplanes/Milviz_310R/panel/panel.xml",
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/panel/panel.xml",
       "size": 1280,
       "date": 133121182379694268
     },
     {
-      "path": "SimObjects/Airplanes/Milviz_310R/model/MV310_Interior.xml",
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/model/PC6_Interior.xml",
+      "size": 352061,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/systems.cfg",
+      "size": 26594,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/panel/panel.xml",
+      "size": 1280,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/model/PC6_Interior.xml",
+      "size": 352061,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/systems.cfg",
+      "size": 26594,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/panel/panel.xml",
+      "size": 1280,
+      "date": 133121182379694268
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/model/PC6_Interior.xml",
       "size": 352061,
       "date": 133121182379694268
     }
