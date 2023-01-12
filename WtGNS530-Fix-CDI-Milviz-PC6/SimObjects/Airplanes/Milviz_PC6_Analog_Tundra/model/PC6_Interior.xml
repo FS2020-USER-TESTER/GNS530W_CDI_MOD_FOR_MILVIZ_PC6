@@ -470,11 +470,19 @@
 							<UseTemplate Name="ASOBO_GT_Anim">
 								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
 								<ANIM_CODE>
+								0 sp0
+								(A:CIRCUIT GENERAL PANEL ON, Bool) if{
 									(A:GPS DRIVES NAV1, Bool) ! if{
-										(A:NAV TOFROM:1, Enum) 1 == (A:CIRCUIT GENERAL PANEL ON, Bool) and 10 *
+										(A:NAV TOFROM:1, Enum) 1 == if{ 1 sp0 }
 									} els{
-										0
+										(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs
+												s1 180 &gt; if{ 360 l1 - abs sp1 }
+												l1 90 &lt; if{ 1 sp0 }
+											}
 									}
+								}
+								l0 10 *
 								</ANIM_CODE>
 								<ANIM_LAG>50</ANIM_LAG>
 								<ANIM_LENGTH>10</ANIM_LENGTH>
@@ -490,11 +498,19 @@
 							<UseTemplate Name="ASOBO_GT_Anim">
 								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
 								<ANIM_CODE>
+								0 sp0
+								(A:CIRCUIT GENERAL PANEL ON, Bool) if{
 									(A:GPS DRIVES NAV1, Bool) ! if{
-										(A:NAV TOFROM:1, Enum) 2 == (A:CIRCUIT GENERAL PANEL ON, Bool) and 10 *
+										(A:NAV TOFROM:1, Enum) 2 == if{ 1 sp0 }
 									} els{
-										0
+										(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs
+												s1 180 &gt; if{ 360 l1 - abs sp1 }
+												l1 90 &gt; if{ 1 sp0 }
+											}
 									}
+								}
+								l0 10 *
 								</ANIM_CODE>
 								<ANIM_LAG>50</ANIM_LAG>
 								<ANIM_LENGTH>10</ANIM_LENGTH>
@@ -806,6 +822,46 @@
 						<IS_AVIONICS_ON>(A:CIRCUIT AVIONICS ON:2, bool)</IS_AVIONICS_ON>
 						<WWISE_EVENT>rotary_cdi_obs</WWISE_EVENT>
 						<COUNT>4</COUNT>
+						<GPS_DRIVES_NAV_SIMVAR>(L:AS430_CDI_Source_1, Bool)</GPS_DRIVES_NAV_SIMVAR>
+						<FLAG_GLIDE_CODE>
+							(A:GPS HAS GLIDEPATH, bool) (A:NAV HAS GLIDE SLOPE:2, Bool) (L:AS430_CDI_Source_1, Bool) ?
+						</FLAG_GLIDE_CODE>
+						<FLAG_TO_CODE>
+								0 sp0
+								(A:AVIONICS MASTER SWITCH,bool) if{   
+									(L:AS430_CDI_Source_1, Bool) if{
+											(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs
+												s1 180 &gt; if{ 360 l1 - abs sp1 }
+												l1 90 &lt; if{ 1 sp0 }
+											}
+									}
+									els{
+										(A:NAV TOFROM:2, Enum) 1 == if{ 1 sp0 }
+									}
+								}
+								l0
+						</FLAG_TO_CODE>
+						<FLAG_FROM_CODE>
+								0 sp0
+								(A:AVIONICS MASTER SWITCH,bool) if{   
+									(L:AS430_CDI_Source_1, Bool) if{
+											(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs
+												s1 180 &gt; if{ 360 l1 - abs sp1 }
+												l1 90 &gt; if{ 1 sp0 }
+											}
+									}
+									els{
+										(A:NAV TOFROM:2, Enum) 2 == if{ 1 sp0 }
+									}
+								}
+								l0
+						</FLAG_FROM_CODE>
+					</UseTemplate>
+					<UseTemplate Name="ASOBO_INSTRUMENT_CDI_Loc_Glide_Needles_Template">
+							<ID>2</ID>
+							<GPS_DRIVES_NAV_SIMVAR>(L:AS430_CDI_Source_1, Bool)</GPS_DRIVES_NAV_SIMVAR>
 					</UseTemplate>
 				</Component>
 
@@ -957,6 +1013,7 @@
 			<Component ID="AS530">
 				<UseTemplate Name="ASOBO_AS530_Template">
 					<ID>1</ID>
+					<EXTERNAL_AUTOPILOT_BEHAVIOR_CONTROL />				
 					<POTENTIOMETER>5</POTENTIOMETER>
 					<DIMMING_FACTOR>0.5</DIMMING_FACTOR>
 					<FAILURE>(A:CIRCUIT ON:9, Bool)</FAILURE>
@@ -968,6 +1025,7 @@
 
 			<Component ID="AS430">
 				<UseTemplate Name="ASOBO_AS430_Template">
+					<EXTERNAL_AUTOPILOT_BEHAVIOR_CONTROL />				
 					<POTENTIOMETER>5</POTENTIOMETER>
 					<DIMMING_FACTOR>0.5</DIMMING_FACTOR>
 					<FAILURE>(A:CIRCUIT ON:10, Bool)</FAILURE>
